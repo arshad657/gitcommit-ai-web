@@ -26,13 +26,30 @@ const quickLinks = [
   },
 ];
 
-export default function DocsPage() {
+
+
+// Fetch the version directly from npm registry
+async function getNpmVersion(): Promise<string> {
+  try {
+    const res = await fetch("https://registry.npmjs.org/@arshad657/gitcommit-ai/latest", {
+      next: { revalidate: 3600 } // Cache for 1 hour so it stays ultra-fast
+    });
+    const data = await res.json();
+    return `v${data.version}`;
+  } catch (error) {
+    return "v1.0.0"; // Safe fallback if network drops
+  }
+}
+
+export default async function DocsPage() {
+  const version = await getNpmVersion();
+
   return (
     <article className="prose-docs max-w-3xl">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-3">
-          <Badge variant="accent">v1.0</Badge>
+          <Badge variant="accent">{version}</Badge>
           <Badge variant="muted">Open Source</Badge>
         </div>
         <h1>Introduction</h1>
@@ -45,7 +62,7 @@ export default function DocsPage() {
 
       <Callout variant="success" title="Quick start">
         Run{" "}
-        <code>npm install -g gitcommit-ai</code> then{" "}
+        <code>npm install -g @arshad657/gitcommit-ai</code> then{" "}
         <code>gitcommit init</code> to get started in under a minute.
       </Callout>
 

@@ -21,7 +21,7 @@ export function Footer() {
               powered by Google Gemini.
             </p>
             <Link
-              href="https://github.com/your-org/gitcommit-ai"
+              href="https://github.com/arshad657/gitcommit-ai"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 text-text-secondary hover:text-text-primary text-sm transition-colors"
@@ -61,10 +61,10 @@ export function Footer() {
             <ul className="space-y-2">
               {[
                 { label: "API Key Guide", href: "/docs/api-key-guide" },
-                { label: "Playground", href: "/playground" },
+                // { label: "Playground", href: "/playground" },
                 {
                   label: "npm package",
-                  href: "https://npmjs.com/package/gitcommit-ai",
+                  href: "https://npmjs.com/package/@arshad657/gitcommit-ai",
                 },
               ].map((l) => (
                 <li key={l.label}>

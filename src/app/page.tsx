@@ -100,7 +100,7 @@ export default function HomePage() {
                 <span className="text-text-muted select-none">$</span>
                 <span className="text-accent">npm</span>
                 <span className="text-text-secondary">install -g</span>
-                <span className="text-text-primary">gitcommit-ai</span>
+                <span className="text-text-primary">@arshad657/gitcommit-ai</span>
                 <button
                   className="ml-2 text-text-muted hover:text-text-secondary transition-colors"
                   aria-label="Copy install command"
@@ -221,7 +221,7 @@ export default function HomePage() {
                   <span className="text-text-muted">$ </span>
                   <span className="text-accent">npm</span>
                   <span className="text-text-secondary"> install -g </span>
-                  <span className="text-text-primary">gitcommit-ai</span>
+                  <span className="text-text-primary">@arshad657/gitcommit-ai</span>
                 </p>
               </div>
               <div>
@@ -321,7 +321,7 @@ export default function HomePage() {
                 <span className="text-text-muted">$</span>
                 <span className="text-accent">npm</span>
                 <span className="text-text-secondary">install -g</span>
-                <span>gitcommit-ai</span>
+                <span>@arshad657/gitcommit-ai</span>
               </div>
               <Link
                 href="/docs"

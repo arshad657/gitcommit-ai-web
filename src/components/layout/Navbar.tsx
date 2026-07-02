@@ -53,7 +53,7 @@ export function Navbar() {
         {/* Right */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href="https://github.com/your-org/gitcommit-ai"
+            href="https://github.com/arshad657/gitcommit-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-text-secondary hover:text-text-primary text-sm transition-colors"
@@ -103,7 +103,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-2 px-3 py-2 rounded-md bg-accent text-background text-sm font-semibold text-center font-mono"
           >
-            npm install -g gitcommit-ai
+            npm install -g @arshad657/gitcommit-ai
           </Link>
         </div>
       )}

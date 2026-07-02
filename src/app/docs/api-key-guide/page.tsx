@@ -16,7 +16,7 @@ export default function ApiKeyGuidePage() {
     <article className="prose-docs max-w-3xl">
       <h1>API Key Guide</h1>
       <p>
-        gitcommit-ai uses the{" "}
+        @arshad657/gitcommit-ai uses the{" "}
         <a
           href="https://ai.google.dev"
           target="_blank"
@@ -79,7 +79,7 @@ export default function ApiKeyGuidePage() {
           {"\n"}
           <span className="text-accent">✓ </span>
           <span className="text-text-secondary">
-            API key saved to ~/.gitcommit-ai/config.json
+            API key saved to ~/.gitcommitrc
           </span>
         </code>
       </pre>
@@ -126,7 +126,7 @@ export default function ApiKeyGuidePage() {
           {
             icon: Shield,
             title: "Stored locally",
-            desc: "Your API key lives only in ~/.gitcommit-ai/config.json on your machine.",
+            desc: "Your API key lives only in ~/.gitcommitrc on your machine.",
           },
           {
             icon: Zap,

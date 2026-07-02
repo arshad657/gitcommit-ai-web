@@ -31,7 +31,7 @@ const flags = [
   {
     flag: "--version",
     short: "-v",
-    description: "Print the installed version of gitcommit-ai.",
+    description: "Print the installed version of @arshad657/gitcommit-ai.",
     example: "gitcommit --version",
   },
   {
@@ -47,7 +47,7 @@ export default function CommandsPage() {
     <article className="prose-docs max-w-3xl">
       <h1>Commands & Flags</h1>
       <p>
-        gitcommit-ai exposes a single main command — <code>gitcommit</code> — with
+        @arshad657/gitcommit-ai exposes a single main command — <code>gitcommit</code> — with
         several subcommands and flags for customizing behavior.
       </p>
 
@@ -75,7 +75,7 @@ Commit with this message? [Y/n]`}
       <h3 id="gitcommit-init">gitcommit init</h3>
       <p>
         Configures your Gemini API key. Stores the key at{" "}
-        <code>~/.gitcommit-ai/config.json</code>. Run this once after
+        <code>~/.gitcommitrc</code>. Run this once after
         installation.
       </p>
       <CodeBlock
@@ -164,7 +164,7 @@ gitcommit`}
       />
 
       <Callout variant="info" title="No staged changes?">
-        gitcommit-ai requires at least one staged file. Run{" "}
+        @arshad657/gitcommit-ai requires at least one staged file. Run{" "}
         <code>git add</code> before running <code>gitcommit</code>.
       </Callout>
     </article>

@@ -8,7 +8,7 @@ export default function SetupPage() {
     <article className="prose-docs max-w-3xl">
       <h1>Setup API Key</h1>
       <p>
-        gitcommit-ai uses Google Gemini to generate commit messages. You need a
+        @arshad657/gitcommit-ai uses Google Gemini to generate commit messages. You need a
         Gemini API key to authenticate requests. The key is stored{" "}
         <strong>locally on your machine</strong> and never leaves it.
       </p>
@@ -40,7 +40,7 @@ export default function SetupPage() {
         code={`$ gitcommit init
 
 ? Paste your Gemini API key: ••••••••••••••••••••••••••••••
-✓ API key saved to ~/.gitcommit-ai/config.json`}
+✓ API key saved to ~/.gitcommitrc`}
         language="bash"
         variant="terminal"
         filename="terminal"
@@ -48,7 +48,7 @@ export default function SetupPage() {
 
       <h2 id="storage">Where is the key stored?</h2>
       <p>
-        Your API key is saved to <code>~/.gitcommit-ai/config.json</code> on
+        Your API key is saved to <code>~/.gitcommitrc</code> on
         your local filesystem. It is:
       </p>
       <ul>
@@ -92,7 +92,7 @@ gitcommit`}
         variant="terminal"
       />
       <p>
-        If configured correctly, gitcommit-ai will output a generated commit
+        If configured correctly, @arshad657/gitcommit-ai will output a generated commit
         message and prompt you to confirm.
       </p>
     </article>

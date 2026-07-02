@@ -28,14 +28,14 @@ export const docsNav: DocNavGroup[] = [
   {
     title: "Resources",
     items: [
-      {
-        title: "Playground",
-        href: "/playground",
-        badge: "Beta",
-      },
+      // {
+      //   title: "Playground",
+      //   href: "/playground",
+      //   badge: "Beta",
+      // },
       {
         title: "GitHub",
-        href: "https://github.com/your-org/gitcommit-ai",
+        href: "https://github.com/arshad657/gitcommit-ai",
       },
     ],
   },
