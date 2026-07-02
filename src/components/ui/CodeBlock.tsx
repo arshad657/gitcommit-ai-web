@@ -13,6 +13,25 @@ interface CodeBlockProps {
   variant?: "default" | "terminal";
 }
 
+function cleanCodeForCopy(code: string): string {
+  return code
+    .split("\n")
+    .map((line) => {
+      const promptMatch = line.match(/^("?[A-Z]:\\+[^"]*"?>)\s*(.*)$/i);
+      if (promptMatch) {
+        return promptMatch[2];
+      }
+      if (line.startsWith("$ ")) {
+        return line.slice(2);
+      }
+      if (line === "$") {
+        return "";
+      }
+      return line;
+    })
+    .join("\n");
+}
+
 export function CodeBlock({
   code,
   language = "bash",
@@ -24,7 +43,8 @@ export function CodeBlock({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
+    const cleaned = cleanCodeForCopy(code);
+    await navigator.clipboard.writeText(cleaned);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -112,6 +132,13 @@ function highlightCode(code: string, language: string): string {
             highlightBashLine(line.slice(2))
           );
         }
+        const promptMatch = line.match(/^("?[A-Z]:\\+[^"]*"?>)\s*(.*)$/i);
+        if (promptMatch) {
+          return (
+            `<span class="token-muted">${escapeHtml(promptMatch[1])} </span>` +
+            highlightBashLine(promptMatch[2])
+          );
+        }
         return highlightBashLine(line);
       })
       .join("\n");
@@ -122,15 +149,42 @@ function highlightCode(code: string, language: string): string {
 function highlightBashLine(line: string): string {
   const escaped = escapeHtml(line);
   return escaped
-    .replace(
-      /(npm|npx|gitcommit|git|node)/g,
-      '<span class="token-green">$1</span>'
-    )
-    .replace(
-      /(-g|--body|--auto|--no-verify|init|commit|status)/g,
-      '<span class="token-blue">$1</span>'
-    )
-    .replace(/(["'][^"']*["'])/g, '<span class="token-amber">$1</span>');
+    .split(" ")
+    .map((token) => {
+      if (!token) return "";
+
+      // Check if it's a quoted string
+      if (
+        (token.startsWith('"') && token.endsWith('"')) ||
+        (token.startsWith("'") && token.endsWith("'")) ||
+        (token.startsWith("&quot;") && token.endsWith("&quot;"))
+      ) {
+        return `<span class="token-amber">${token}</span>`;
+      }
+
+      // Strip trailing punctuation
+      const cleanToken = token
+        .replace(/[;:]$/, "")
+        .replace(/&quot;$/, "")
+        .replace(/&gt;$/, "");
+
+      const commands = ["npm", "npx", "gitcommit", "git", "node"];
+      const flagsAndSubcommands = [
+        "-g", "-b", "-a", "-v", "-h",
+        "--body", "--auto", "--no-verify", "--dry-run", "--version", "--help",
+        "init", "commit", "status"
+      ];
+
+      if (commands.includes(cleanToken)) {
+        return `<span class="token-green">${token}</span>`;
+      }
+      if (flagsAndSubcommands.includes(cleanToken)) {
+        return `<span class="token-blue">${token}</span>`;
+      }
+
+      return token;
+    })
+    .join(" ");
 }
 
 function escapeHtml(str: string): string {

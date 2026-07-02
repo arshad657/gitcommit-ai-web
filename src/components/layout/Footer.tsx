@@ -85,7 +85,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-text-muted text-xs font-mono">
-            Built with Next.js · Deployed on Vercel
+            @copyrite - Arshad Almas
           </p>
           <p className="text-text-muted text-xs">
             MIT License · {new Date().getFullYear()}

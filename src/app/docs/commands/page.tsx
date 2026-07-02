@@ -16,30 +16,30 @@ const flags = [
     description: "Skip the confirmation prompt and commit automatically with the generated message.",
     example: "gitcommit --auto",
   },
-  {
-    flag: "--no-verify",
-    short: null,
-    description: "Bypass git pre-commit hooks. Passes --no-verify to the underlying git commit call.",
-    example: "gitcommit --no-verify",
-  },
-  {
-    flag: "--dry-run",
-    short: null,
-    description: "Generate and display the commit message without actually committing.",
-    example: "gitcommit --dry-run",
-  },
-  {
-    flag: "--version",
-    short: "-v",
-    description: "Print the installed version of @arshad657/gitcommit-ai.",
-    example: "gitcommit --version",
-  },
-  {
-    flag: "--help",
-    short: "-h",
-    description: "Show the help message with all available flags.",
-    example: "gitcommit --help",
-  },
+  // {
+  //   flag: "--no-verify",
+  //   short: null,
+  //   description: "Bypass git pre-commit hooks. Passes --no-verify to the underlying git commit call.",
+  //   example: "gitcommit --no-verify",
+  // },
+  // {
+  //   flag: "--dry-run",
+  //   short: null,
+  //   description: "Generate and display the commit message without actually committing.",
+  //   example: "gitcommit --dry-run",
+  // },
+  // {
+  //   flag: "--version",
+  //   short: "-v",
+  //   description: "Print the installed version of @arshad657/gitcommit-ai.",
+  //   example: "gitcommit --version",
+  // },
+  // {
+  //   flag: "--help",
+  //   short: "-h",
+  //   description: "Show the help message with all available flags.",
+  //   example: "gitcommit --help",
+  // },
 ];
 
 export default function CommandsPage() {

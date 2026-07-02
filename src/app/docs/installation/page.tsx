@@ -36,11 +36,10 @@ export default function InstallationPage() {
       <h2 id="installation">🚀 Installation</h2>
       <p>Install the package globally using <code>npm</code>:</p>
       <CodeBlock
-        code="npm install -g @arshad657/gitcommit-ai"
+        code={'"C:\\User\\my_project"> npm install -g @arshad657/gitcommit-ai'}
         language="bash"
         variant="terminal"
         filename="terminal"
-        className="mb-4"
       />
       <Callout variant="info" title="Permissions Note">
         Depending on your system permissions, you may need to run <code>sudo npm install -g @arshad657/gitcommit-ai</code> on macOS/Linux.
@@ -72,7 +71,6 @@ export default function InstallationPage() {
 git add src/config.js`}
         language="bash"
         variant="terminal"
-        className="mb-4"
       />
 
       <h3 id="run-generator">2. Run the generator</h3>
@@ -81,7 +79,6 @@ git add src/config.js`}
         code="gitcommit"
         language="bash"
         variant="terminal"
-        className="mb-4"
       />
 
       <h3 id="cli-options">3. CLI Options</h3>
