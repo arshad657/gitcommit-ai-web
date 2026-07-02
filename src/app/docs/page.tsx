@@ -32,7 +32,7 @@ const quickLinks = [
 async function getNpmVersion(): Promise<string> {
   try {
     const res = await fetch("https://registry.npmjs.org/@arshad657/gitcommit-ai/latest", {
-      next: { revalidate: 3600 } // Cache for 1 hour so it stays ultra-fast
+      cache: "no-store" // Forces Next.js to fetch fresh data on every page reload
     });
     const data = await res.json();
     return `v${data.version}`;

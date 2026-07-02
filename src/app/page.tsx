@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, GitCommit, Zap, Shield, Terminal, Star, Copy } from "lucide-react";
+import { ArrowRight, GitCommit, Zap, Shield, Terminal, Star, Copy, Check, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/Badge";
@@ -44,6 +47,20 @@ const features = [
 ];
 
 export default function HomePage() {
+  const [showToast, setShowToast] = useState(false);
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText("npm install -g @arshad657/gitcommit-ai");
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -96,7 +113,10 @@ export default function HomePage() {
 
             {/* Install command */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
-              <div className="flex items-center gap-3 bg-surface border border-border rounded-lg px-4 py-3 font-mono text-sm text-text-primary group cursor-pointer hover:border-accent/40 transition-colors">
+              <div
+                onClick={copyToClipboard}
+                className="flex items-center gap-3 bg-surface border border-border rounded-lg px-4 py-3 font-mono text-sm text-text-primary group cursor-pointer hover:border-accent/40 transition-colors"
+              >
                 <span className="text-text-muted select-none">$</span>
                 <span className="text-accent">npm</span>
                 <span className="text-text-secondary">install -g</span>
@@ -105,7 +125,11 @@ export default function HomePage() {
                   className="ml-2 text-text-muted hover:text-text-secondary transition-colors"
                   aria-label="Copy install command"
                 >
-                  <Copy className="w-3.5 h-3.5" />
+                  {showToast ? (
+                    <Check className="w-3.5 h-3.5 text-accent transition-all duration-200" />
+                  ) : (
+                    <Copy className="w-3.5 h-3.5 transition-all duration-200" />
+                  )}
                 </button>
               </div>
               <Link
@@ -282,8 +306,8 @@ export default function HomePage() {
                 <div key={item.version} className="relative">
                   <div
                     className={`absolute -left-[26px] w-3 h-3 rounded-full border-2 top-1.5 ${item.status === "done"
-                        ? "bg-accent border-accent"
-                        : "bg-surface border-accent animate-pulse"
+                      ? "bg-accent border-accent"
+                      : "bg-surface border-accent animate-pulse"
                       }`}
                   />
                   <div className="flex items-start gap-3">
@@ -334,6 +358,28 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      {/* Toast Notification */}
+      <div
+        className={`fixed top-5 right-5 z-50 flex items-center gap-3 bg-surface/80 backdrop-blur-md border border-accent/20 rounded-xl px-4 py-3 shadow-xl transition-all duration-300 transform ${showToast
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+          }`}
+        role="alert"
+      >
+        <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+          <CheckCircle2 className="w-4 h-4 text-accent" />
+        </div>
+        <div>
+          <p className="text-text-primary text-sm font-semibold">
+            Copied successfully
+          </p>
+          <p className="text-text-muted text-xs font-mono mt-0.5">
+            npm install -g @arshad657/gitcommit-ai
+          </p>
+        </div>
+      </div>
+
       <Footer />
     </>
   );
