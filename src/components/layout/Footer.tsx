@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { GitBranch, Github } from "lucide-react";
+import { GitBranch } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -26,7 +27,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 text-text-secondary hover:text-text-primary text-sm transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <FaGithub className="w-4 h-4" />
               GitHub
             </Link>
           </div>
